@@ -31,9 +31,11 @@ public class CompanyService {
         }
         return this.storeCompanyAndDividend(ticker);
     }
+
     public Page<CompanyEntity> getAllCompany(Pageable pageable) {
         return this.companyRepository.findAll(pageable);
     }
+
     private Company storeCompanyAndDividend(String ticker) {
         // ticker를 기준으로 회사를 스크래핑
         Company company = this.yahooFinanceScraper.scrapCompanyByTicker(ticker);

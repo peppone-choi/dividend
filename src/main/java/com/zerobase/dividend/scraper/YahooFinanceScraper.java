@@ -22,6 +22,7 @@ public class YahooFinanceScraper implements Scraper {
     private static final String SUMMARY_URL = "https://finance.yahoo.com/quote/%s?p=%s";
 
     private static long START_TIME = 86400; // 60 * 60 * 24
+
     @Override
     public ScrapedResult scrap(Company company) {
         var scrapResult = new ScrapedResult();
@@ -69,6 +70,7 @@ public class YahooFinanceScraper implements Scraper {
         }
         return scrapResult;
     }
+
     @Override
     public Company scrapCompanyByTicker(String ticker) {
         String url = String.format(SUMMARY_URL, ticker, ticker);

@@ -10,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/company")
 @AllArgsConstructor
@@ -25,18 +23,19 @@ public class CompanyController {
     }
 
     @GetMapping
-    public ResponseEntity<?> searchCompany(final Pageable pageable){
+    public ResponseEntity<?> searchCompany(final Pageable pageable) {
         Page<CompanyEntity> companies = this.companyService.getAllCompany(pageable);
         return ResponseEntity.ok(companies);
     }
 
     /**
      * 회사 및 배당금 정보 추가
+     *
      * @param request
      * @return
      */
     @PostMapping
-    public ResponseEntity<?> addCompany(@RequestBody Company request){
+    public ResponseEntity<?> addCompany(@RequestBody Company request) {
         String ticker = request.getTicker().trim();
         if (ObjectUtils.isEmpty(ticker)) {
             throw new RuntimeException("ticker is empty");
@@ -48,7 +47,7 @@ public class CompanyController {
     }
 
     @DeleteMapping
-    public ResponseEntity<?> deleteCompany(){
+    public ResponseEntity<?> deleteCompany() {
         return null;
     }
 }
